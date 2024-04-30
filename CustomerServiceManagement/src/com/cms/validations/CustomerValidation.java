@@ -9,14 +9,22 @@ import com.cms.exceptions.InvalidPlanException;
 import com.cms.tester.Customer;
 
 public class CustomerValidation {
+//	public static ServicePlan parseAndValidateAcType(String acType) throws InvalidPlanException {
+//		for (ServicePlan color : ServicePlan.values()) {
+//			if (color.name().equalsIgnoreCase(acType)) {
+//				return ServicePlan.valueOf(acType.toUpperCase());
+//
+//			}
+//		}
+//		throw new InvalidPlanException("plan not found");
+//	}
 	public static ServicePlan parseAndValidateAcType(String acType) throws InvalidPlanException {
-		for (ServicePlan color : ServicePlan.values()) {
-			if (color.name().equalsIgnoreCase(acType)) {
-				return ServicePlan.valueOf(acType.toUpperCase());
-
-			}
-		}
-		throw new InvalidPlanException("plan not found");
+	    for (ServicePlan plan : ServicePlan.values()) {
+	        if (plan.name().equalsIgnoreCase(acType)) {
+	            return plan;
+	        }
+	    }
+	    throw new InvalidPlanException("Plan not found");
 	}
 
 	// add a static method for parsing string --> LocalDate
