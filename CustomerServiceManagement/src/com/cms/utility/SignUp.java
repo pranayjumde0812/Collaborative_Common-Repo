@@ -31,7 +31,7 @@ public class SignUp {
 		LocalDate dob1 = LocalDate.parse(dob);
 		
 		System.out.println("enter the plan");
-		ServicePlan s= parseAndValidateAcType(sc.next());
+		ServicePlan s= parseAndValidateAcType(sc.next(),registrationAmount);
 		
 
 		Customer customer = new Customer(firstname, lastname, email, password, registrationAmount, dob1,

@@ -9,33 +9,16 @@ import com.cms.exceptions.InvalidPlanException;
 import com.cms.tester.Customer;
 
 public class CustomerValidation {
-//	public static ServicePlan parseAndValidateAcType(String acType) throws InvalidPlanException {
-//		for (ServicePlan color : ServicePlan.values()) {
-//			if (color.name().equalsIgnoreCase(acType)) {
-//				return ServicePlan.valueOf(acType.toUpperCase());
-//
-//			}
-//		}
-//		throw new InvalidPlanException("plan not found");
-//	}
-	public static ServicePlan parseAndValidateAcType(String acType) throws InvalidPlanException {
-//	    for (ServicePlan plan : ServicePlan.values()) 
-//	    {
-//	    	System.out.println();
-//	        if (plan.equals(ServicePlan.valueOf(acType))) {
-//	            return plan;
-//	        }
-//	    }
-//	    throw new InvalidPlanException("Plan not found");
-		try
-		{
-			System.out.println(acType);
-			return ServicePlan.valueOf(acType.toUpperCase());
-		
-		}
-		catch (Exception e) {
-			throw new InvalidPlanException("not found");
-		}
+
+	public static ServicePlan parseAndValidateAcType(String acType, double regAmount) throws InvalidPlanException {
+		// 1. parse string(plan) -- > enum
+		ServicePlan servicePlan = ServicePlan.valueOf(acType.toUpperCase());
+		// => plan is valid , now chk if reg amount is correct
+		if (servicePlan.getPlanCharges() == regAmount)
+			return servicePlan;
+		// => incorrect reg amount : throw custom exc
+		throw new InvalidPlanException("Reg amount doesn't match with the chose plan cost");
+
 	}
 
 	// add a static method for parsing string --> LocalDate
@@ -44,9 +27,8 @@ public class CustomerValidation {
 	}
 
 	public static void checkForDup(String email, ArrayList<Customer> c) throws InvalidCredentials {
-		for (Customer a : c) {
-			if (a.getEmail().equals(email))
+			Customer a = new Customer(email);
+			if (c.contains(a))
 				throw new InvalidCredentials("Email already used");
 		}
-	}
 }

@@ -16,7 +16,7 @@ public class Main {
 			boolean exit = false;
 			do {
 				System.out.println(
-						"1. Signup\n" + "2. Signin\n" + "3. change email\n" + "4. display all users\n" + "0. exit");
+						"1. Signup\n" + "2. Signin\n" + "3. change email\n" +"4. Unsubscribe\n"+ "5. display all users\n" + "6. exit");
 				System.out.println("Enter the choice");
 				try {
 					switch (sc.nextInt()) {
@@ -61,8 +61,8 @@ public class Main {
 						System.out.println("Exit from api");
 						exit = true;
 						break;
-					case 0:
-						break;
+//					case 0:
+//						break;
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
