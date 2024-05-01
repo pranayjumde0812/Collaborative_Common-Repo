@@ -19,12 +19,23 @@ public class CustomerValidation {
 //		throw new InvalidPlanException("plan not found");
 //	}
 	public static ServicePlan parseAndValidateAcType(String acType) throws InvalidPlanException {
-	    for (ServicePlan plan : ServicePlan.values()) {
-	        if (plan.name().equalsIgnoreCase(acType)) {
-	            return plan;
-	        }
-	    }
-	    throw new InvalidPlanException("Plan not found");
+//	    for (ServicePlan plan : ServicePlan.values()) 
+//	    {
+//	    	System.out.println();
+//	        if (plan.equals(ServicePlan.valueOf(acType))) {
+//	            return plan;
+//	        }
+//	    }
+//	    throw new InvalidPlanException("Plan not found");
+		try
+		{
+			System.out.println(acType);
+			return ServicePlan.valueOf(acType.toUpperCase());
+		
+		}
+		catch (Exception e) {
+			throw new InvalidPlanException("not found");
+		}
 	}
 
 	// add a static method for parsing string --> LocalDate
