@@ -2,6 +2,7 @@ package com.cms.validations;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import com.cms.enums.ServicePlan;
 import com.cms.exceptions.InvalidCredentials;
@@ -27,14 +28,19 @@ public class CustomerValidation {
 	}
 
 	public static void checkForDup(String email, ArrayList<Customer> c) throws InvalidCredentials {
-			Customer a = new Customer(email);
-			if (c.contains(a))
-				throw new InvalidCredentials("Email already used");
-		}
-	public static void removeAfterGivenDob(String reqDob,ArrayList<Customer> customers) {
+		Customer a = new Customer(email);
+		if (c.contains(a))
+			throw new InvalidCredentials("Email already used");
+	}
+
+	public static void removeAfterGivenDob(String reqDob, ArrayList<Customer> customers) {
 		LocalDate requiredDob = LocalDate.parse(reqDob);
-		
-		if(customers.get(0))
-		
+		Iterator<Customer> iter = customers.iterator();
+		while (iter.hasNext()) {
+			Customer cust = iter.next();
+			if (cust.getDob().isAfter(requiredDob)) {
+				iter.remove();
+			}
+		}
 	}
 }

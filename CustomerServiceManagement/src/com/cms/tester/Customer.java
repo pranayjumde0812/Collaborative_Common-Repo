@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import com.cms.tester.*;
 import com.cms.enums.ServicePlan;
 
-public class Customer {
+public class Customer implements Comparable<Customer> {
 	private String firstName, lastName, email, password;
 	private double registrationAmount;
 	private LocalDate dob;
@@ -107,5 +107,10 @@ public class Customer {
 			return this.email.equals(c.email);
 		}
 		return false;
+	}
+
+	@Override
+	public int compareTo(Customer customer) {
+		return this.getEmail().compareTo(customer.getEmail());
 	}
 }
