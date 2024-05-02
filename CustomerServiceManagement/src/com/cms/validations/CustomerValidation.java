@@ -31,4 +31,10 @@ public class CustomerValidation {
 			if (c.contains(a))
 				throw new InvalidCredentials("Email already used");
 		}
+	public static void removeAfterGivenDob(String reqDob,ArrayList<Customer> customers) {
+		LocalDate requiredDob = LocalDate.parse(reqDob);
+		
+		if(customers.get(0))
+		
+	}
 }

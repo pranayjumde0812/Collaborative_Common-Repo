@@ -37,7 +37,7 @@ public class SignUp {
 		Customer customer = new Customer(firstname, lastname, email, password, registrationAmount, dob1,
 				s);
 		System.out.println(customer);
-
+		c.add(customer);
 		return customer;
 	
 

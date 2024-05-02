@@ -1,12 +1,12 @@
 package com.cms.tester;
 
+import static com.cms.utility.SignIn.isRegistered;
+import static com.cms.utility.SignUp.signUp;
+import static com.cms.utility.Unsubscribe.unSubscribe;
+import static com.cms.utility.Utilities.*;
+
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import static com.cms.utility.Unsubscribe.*;
-
-import static com.cms.utility.SignIn.*;
-import static com.cms.utility.SignUp.*;
 
 public class Main {
 
@@ -22,7 +22,7 @@ public class Main {
 					switch (sc.nextInt()) {
 					case 1:
 						System.out.println("Sign up");
-						c.add(signUp(c, sc));
+						signUp(c, sc);
 						System.out.println("hello");
 
 						break;
@@ -41,17 +41,16 @@ public class Main {
 						String currEmail = sc.next();
 						isEmailPresent(c, currEmail);
 						System.out.println("enter new mail id");
-						String newEmail = sc.next();
-						changeEmail(c, currEmail, newEmail);
+						String newPassword = sc.next();
+						changePassword(c, currEmail, newPassword);
 						break;
 					case 4:
 						System.out.println("unsubscribe page");
 						System.out.println("enter email");
 						String e = sc.next();
 						isEmailPresent(c, e);
-						System.out.println("enter password");
-						String p = sc.next();
-						unSubscribe(c, e, p);
+						
+						unSubscribe(c,e);
 
 						break;
 					case 5:
